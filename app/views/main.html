@@ -1,0 +1,76 @@
+<div class="container-fluid">
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+
+        <div class="btn-group" role="group" aria-label="...">
+            <button type="button" class="btn btn-default navbar-btn" ng-disabled="cols===0" ng-click="decreaseCols()">
+                <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+            </button>
+            <button type="button" class="btn btn-default navbar-btn">
+                Columns ({{cols}})
+            </button>
+            <button type="button" class="btn btn-default navbar-btn" ng-click="increaseCols()">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            </button>
+        </div>
+
+        <div class="btn-group" role="group" aria-label="...">
+            <button type="button" class="btn btn-default navbar-btn" ng-disabled="rows===0" ng-click="decreaseRows()">
+                <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+            </button>
+            <button type="button" class="btn btn-default navbar-btn">
+                Rows ({{rows}})
+            </button>
+            <button type="button" class="btn btn-default navbar-btn" ng-click="increaseRows()">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            </button>
+        </div>
+
+        <div class="btn-group" role="group" aria-label="...">
+            <button type="button" class="btn btn-default navbar-btn">
+                Sticky Notes ({{notes.length}})
+            </button>
+            <button type="button" class="btn btn-default navbar-btn" ng-click="addNote()">
+                <span class="glyphicon glyphicon-plus" aria-header="true"></span>
+            </button>
+        </div>
+    </div>
+    </nav>
+
+    <div class="whiteboard" id="whiteboard">
+        <div ng-repeat="note in notes">
+
+            <div class="stickynote" id="{{note.id}}" my-draggable="lel">
+                <div class="stickynote_handle">
+                    <div class="color_stickynote_btn pull-left"></div>
+                    <div class="close_stickynote_btn">
+                        <button type="button" class="close" data-toggle="modal" data-target="#confirmNoteDeletionModal_{{note.id}}" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="confirmNoteDeletionModal_{{note.id}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabel">
+                                <span class="glyphicon glyphicon-alert" aria-header="true"></span>  Delete note?
+                            </h4>
+                        </div>
+                        <div class="modal-body">
+                            Do you want to delete this sticky note? It will be gone forever!
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-danger" ng-click="deleteNote(note.id)" data-dismiss="modal">Delete sticky note</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>

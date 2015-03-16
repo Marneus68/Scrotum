@@ -1,0 +1,65 @@
+
+body { padding-bottom: 70px; }
+
+.whiteboard {
+    width: 800px;
+    height: 600px;
+    margin-top: 70px;
+    background-color: #EEE;
+    border-radius: 3px;
+    overflow: auto;
+    resize: both;
+}
+
+.horizontal_separators_holder {
+
+}
+
+.horizontal_separator {
+    border: row-resize;
+}
+
+.vertical_separators_holder {
+
+}
+
+.vertical_separator {
+    border: col-resize;
+}
+
+.stickynote {
+    width: 150px;
+    height: 125px;
+    min-width: 150px;
+    min-height: 125px;
+    border-radius: 3px;
+    position: absolute;
+    background-color: white;
+    overflow: auto;
+    resize: both;
+}
+
+.close_stickynote_btn {
+    padding-right:6px;
+    padding-top:2px;
+}
+
+.color_stickynote_btn {
+    width: 19px;
+    height: 19px;
+    margin-left: 3px;
+    margin-top: 3px;
+    border-style: solid;
+    border-width: 1px;
+    cursor: default;
+    border-color: rgba(0,0,0,0.1);
+}
+
+.stickynote_handle {
+    height: 25px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    cursor: move;
+    background-color: rgba(0,0,0,0.1);
+}
+
