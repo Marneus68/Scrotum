@@ -8,7 +8,7 @@
                 <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
             </button>
             <button type="button" class="btn btn-default navbar-btn">
-                Columns ({{cols}})
+                Columns ({{verticalSeparators.length}})
             </button>
             <button type="button" class="btn btn-default navbar-btn" ng-click="increaseCols()">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
@@ -20,7 +20,7 @@
                 <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
             </button>
             <button type="button" class="btn btn-default navbar-btn">
-                Rows ({{rows}})
+                Rows ({{horizontalSeparators.length}})
             </button>
             <button type="button" class="btn btn-default navbar-btn" ng-click="increaseRows()">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
@@ -38,7 +38,20 @@
     </div>
     </nav>
 
-    <div class="whiteboard" id="whiteboard">
+    <div class="whiteboard" id="whiteboard" ng-click="resizeWiteboard($event)">
+
+        <div ng-repeat="separator in horizontalSeparators">
+
+            <div class="horizontal_separator"></div>
+
+        </div>
+
+        <div ng-repeat="separator in verticalSeparators">
+
+            <div class="vertical_separator"></div>
+
+        </div>
+
         <div ng-repeat="note in notes">
 
             <div class="stickynote" id="{{note.id}}" my-draggable="lel">
@@ -71,6 +84,5 @@
 
         </div>
     </div>
-
-
 </div>
+

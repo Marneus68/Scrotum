@@ -11,20 +11,14 @@ body { padding-bottom: 70px; }
     resize: both;
 }
 
-.horizontal_separators_holder {
-
-}
-
 .horizontal_separator {
-    border: row-resize;
-}
-
-.vertical_separators_holder {
-
+    width: 1px;
+    background-color: #FFF;
 }
 
 .vertical_separator {
-    border: col-resize;
+    height: 1px;
+    background-color: #FFF;
 }
 
 .stickynote {

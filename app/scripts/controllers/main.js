@@ -10,29 +10,54 @@
 
 angular.module('scrotumApp')
     .controller('MainCtrl', function ($scope) {
-        $scope.cols = 0;
-        $scope.rows = 0;
+        $scope.whiteboard = {width:800, height:600};
 
+        $scope.horizontalSeparators = [];
+        $scope.verticalSeparators = [];
         $scope.notes = []; 
     
+        $scope.resizeWiteboard = function(event) {
+            console.log(event.target.clientWidth);
+            console.log(event.target.clientHeight);
+
+            $scope.whiteboard.width = event.target.clientWidth;
+            $scope.whiteboard.height = event.target.clientHeight;
+
+            $scope.placeSepartators();
+        };
+
+        $scope.placeSepartators = function() {
+            $scope.horizontalSeparators.forEach(function(element, index) {
+
+            });
+
+            $scope.verticalSeparators.forEach(function(element, index) {
+
+            });
+        };
+
         $scope.increaseRows = function() {
-            $scope.rows++;
+            $scope.horizontalSeparators.push({
+                id:'h_separtator_'+$scope.horizontalSeparators.length,
+                index: $scope.horizontalSeparators.length,
+                y: 0
+            });
         };
 
         $scope.increaseCols = function() {
-            $scope.cols++;
+            $scope.verticalSeparators.push({
+                id:'h_vertical_'+$scope.verticalSeparators.length,
+                index: $scope.verticalSeparators.length,
+                x: 0
+            });
         };
 
         $scope.decreaseRows = function() {
-            if ($scope.rows > 0) {
-                $scope.rows--;
-            }
+            $scope.horizontalSeparators.pop();
         };
 
         $scope.decreaseCols = function() {
-            if ($scope.cols > 0) {
-                $scope.cols--;
-            }
+            $scope.verticalSeparators.pop();
         };
 
         $scope.addNote = function() {
@@ -46,7 +71,7 @@ angular.module('scrotumApp')
         };
 
         $scope.deleteNote = function(id) {
-            $scope.notes.forEach(function(element, index, array) {
+            $scope.notes.forEach(function(element, index) {
                 if (element.id === id) {
                     $scope.notes.splice(index, 1);
                 }
