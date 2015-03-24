@@ -42,7 +42,7 @@
 
         <div ng-repeat="separator in horizontalSeparators">
 
-            <div class="horizontal_separator"></div>
+            <div style="top:{{separator.y}}" class="horizontal_separator" ></div>
 
         </div>
 
@@ -54,7 +54,7 @@
 
         <div ng-repeat="note in notes">
 
-            <div class="stickynote" id="{{note.id}}" my-draggable="lel">
+            <div class="stickynote" id="{{note.id}}"  my-draggable >
                 <div class="stickynote_handle">
                     <div class="color_stickynote_btn pull-left"></div>
                     <div class="close_stickynote_btn">

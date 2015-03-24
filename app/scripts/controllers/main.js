@@ -10,29 +10,37 @@
 
 angular.module('scrotumApp')
     .controller('MainCtrl', function ($scope) {
-        $scope.whiteboard = {width:800, height:600};
+        $scope.whiteboard = {
+            top : angular.element(document.getElementById('whiteboard')).offsetTop,
+            left : angular.element(document.getElementById('whiteboard')).offsetLeft,
+            width:800, 
+            height:600
+        };
 
         $scope.horizontalSeparators = [];
         $scope.verticalSeparators = [];
         $scope.notes = []; 
     
         $scope.resizeWiteboard = function(event) {
-            console.log(event.target.clientWidth);
-            console.log(event.target.clientHeight);
 
+            $scope.whiteboard.top = event.target.offsetTop;
+            $scope.whiteboard.left = event.target.offsetLeft;
             $scope.whiteboard.width = event.target.clientWidth;
             $scope.whiteboard.height = event.target.clientHeight;
+
+            console.log($scope.whiteboard);
 
             $scope.placeSepartators();
         };
 
         $scope.placeSepartators = function() {
+            var inc = $scope.whiteboard.height;
             $scope.horizontalSeparators.forEach(function(element, index) {
-
+                $scope.horizontalSeparators[index].y = (index+1)*inc;
             });
 
             $scope.verticalSeparators.forEach(function(element, index) {
-
+                
             });
         };
 
@@ -42,6 +50,7 @@ angular.module('scrotumApp')
                 index: $scope.horizontalSeparators.length,
                 y: 0
             });
+            $scope.placeSepartators();
         };
 
         $scope.increaseCols = function() {
@@ -50,6 +59,7 @@ angular.module('scrotumApp')
                 index: $scope.verticalSeparators.length,
                 x: 0
             });
+            $scope.placeSepartators();
         };
 
         $scope.decreaseRows = function() {

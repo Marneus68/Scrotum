@@ -12,17 +12,21 @@ body { padding-bottom: 70px; }
 }
 
 .horizontal_separator {
-    width: 1px;
+    height: 1px;
     background-color: #FFF;
+    position: relative;
+    z-index: 100;
 }
 
 .vertical_separator {
-    height: 1px;
+    width: 1px;
     background-color: #FFF;
+    position: relative;
+    z-index: 100;
 }
 
 .stickynote {
-    width: 150px;
+width: 150px;
     height: 125px;
     min-width: 150px;
     min-height: 125px;
